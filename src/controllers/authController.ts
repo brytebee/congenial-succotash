@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { RegisterValidation } from "../validation/registerValidation";
+import RegisterValidation from "../validations/RegisterValidation";
 
-export const Register = (req: Request, res: Response) => {
+const Register = (req: Request, res: Response) => {
   const body = req.body;
 
   const { error } = RegisterValidation.validate(body);
@@ -10,5 +10,7 @@ export const Register = (req: Request, res: Response) => {
     return res.send(error.details).status(400);
   }
 
-  res.send(body);
+  res.send(req.body);
 };
+
+export default Register;

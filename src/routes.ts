@@ -1,6 +1,10 @@
 import { Router } from "express";
-import { Register } from "./controller/authController";
+import Register from "./controllers/authController";
+import Home from "./controllers/HomeController";
 
-export const routes = (routes: Router) => {
-  routes.post("/api/register", Register);
+const routes = (router: Router) => {
+  router.get("/", Home);
+  router.post("/api/register", Register);
 };
+
+export default routes;
